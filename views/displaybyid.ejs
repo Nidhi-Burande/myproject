@@ -1,0 +1,93 @@
+<html>
+    <script src='/javascripts/jquery-3.4.1.min.js'></script>
+    <script src='/javascripts/statetype.js'></script>
+    <table border='1' cellspacing='10' cellpadding='20' ><tr><td>
+    <form action='/services/suppliereditdelete'>
+        <table>
+            <caption><b>Supplier Interface[Edit/Delete]</b></caption>
+            <tr> 
+                <td><b><i>Supplier Id:</i></b></td>
+                <td><input  readonly='true' type='text' name='sid' value='<%=data.sid %>'>    
+                </td>
+            </tr>  
+
+            
+            <tr>
+                <td><b><i>Supplier Name:</i></b></td>
+                <td><input value='<%=data.sname %>' type='text' name='sname'></td>
+            </tr>    
+    
+            <tr>
+                <td><b><i>Supplier Gender:</i></b></td>
+                <% if(data.sgender=='Male') {%>
+                   <td><input type='radio' name='sgender' checked>Male
+                   <input type='radio' name='sgender' >Female</td>
+                
+                  <%} else{%>
+                    <td><input type='radio' name='sgender' >Male
+                    <input type='radio' name='sgender' checked >Female</td>
+                   <%}
+                 %>    
+                
+            </tr>    
+
+            <tr>
+                <td><b><i>Supplier DOB:</i></b></td>
+                <%
+                    var dd=new Date(data.sdob)
+                    var y=dd.getFullYear()
+                    var m=dd.getMonth()
+                    var d=dd.getDate()
+                    if(m>=1 && m<=9)
+                    m='0'+m
+                    if(d>=1 && d<=9)
+                    d='0'+d
+                    var bd=y+'-'+m+'-'+d
+                    %>
+                    <td><input value='<%=bd%>' type='date' name='sdob'></td>
+            </tr>    
+           
+            <tr>
+                <td><b><i>Mobile No:</i></b></td>
+                <td><input value='<%=data.smobile %>' type='text' name='smobile'></td>
+            </tr>    
+           
+            <tr>
+                <td><b><i> Supplier State:</i></b></td>
+                <td><select id='sstate' name='sstate'>
+                <option value='<%=data.sstate %>'><%=data.statename %></option>    
+                </select></td>
+            </tr>    
+            <tr>
+                <td><b><i>Supplier City:</i></b></td>
+                <td><select id='scity' name='scity'>
+                    <option value='<%=data.scity %>'><%=data.cityname %></option>     
+                    </select></td>
+            </tr>    
+     
+            <tr>
+                <td><b><i>Supplier Address:</i></b></td>
+                <td><textarea rows='3' cols='30' name='saddress'><%=data.saddress%></textarea></td>
+            </tr> 
+
+        </table>
+        
+        <input type='submit' value='Edit' name='btn'> 
+        <input type='submit' value='Delete' name='btn'><br><br>
+    </form>
+    </td>
+    <td>
+     <form action='/services/editpicture' method='post' enctype='multipart/form-data'>
+     <input type='hidden' value='<%= data.sid %>' name='sid'>      
+     <img src='/images/<%=data.spicture %>' width='100' height="100">
+     <h4>Update Picture:</h4>
+     <input type='file' name='spicture'><br><br>
+     <input type='submit' value='Edit Picture'>
+    </form>
+    </td>
+    </tr>
+    
+</table>
+ 
+
+</html>

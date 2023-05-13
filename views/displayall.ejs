@@ -1,0 +1,43 @@
+<html>
+    <a href='/services/supplierinterface'>Add New Record</a><br>
+    <center>
+        <table border='1' width='80%'>
+            <caption><h3><u>List of Suppliers</u></h3></caption>
+            <tr><th>S No</th><th>Supplier ID</th><th>Name</th><th>Date Of Birth</th>
+            <th>Address</th><th>Mobile No</th><th>State</th><th>City</th><th>Edit/Delete</th></tr>
+       
+            <%
+            data.map(function(item,index){%>
+                <tr>
+                   <td><%=(index+1)%></td>
+                   <td><%=item.sid%></td>
+                   <td><%=item.sname%></td>
+                   <%
+                    var dd=new Date(item.sdob) 
+                      var y=dd.getFullYear()
+                    var m=dd.getMonth()
+                    var d=dd.getDate()
+                    if(m==0)
+                    m='00'
+                    if(m>=1 && m<=9)
+                    m='0'+m
+                    if(d>=1 && d<=9)
+                    d='0'+d
+                    var bd=y+'-'+m+'-'+d
+                    %>
+                   <td><%=bd%></td>
+                   <td><%=item.saddress%></td>
+                   <td><%=item.smobile%></td>
+                   <td><%=item.statename%></td>
+                   <td><%=item.cityname%></td>
+                   <td><img src='/images/<%=item.spicture%>' width='40' height='40'></td>
+                   <td><a href='/services/displaybyid?pid=<%=item.sid %>'>Edit/Delete</a></td>
+                </tr>
+           <%
+            })
+            %>
+
+        </table>
+
+    </center>
+</html>

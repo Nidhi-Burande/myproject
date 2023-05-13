@@ -1,0 +1,67 @@
+<script src='/javascripts/jquery-3.4.1.min.js'></script>
+<script src='/javascripts/statetype.js'></script>
+   
+ <a href='/services/displayall'>Display All</a><br>
+ <center>
+    <form action='/services/suppliedproducts' method='post' enctype='multipart/form-data'>
+        <table>
+            <center>
+            <caption>Supplier Interface</caption>
+            
+            <tr>
+                <td><b><i>Supplier Name:</i></b></td>
+                <td><input type='text' name='sname'></td>
+            </tr>
+
+            <tr>
+                <td><b><i>Supplier Gender:</i></b></td>
+                <td>
+                    <input type='radio' id='sgender' name='sgender' value='Male'>Male
+                    <input type='radio' id='sgender' name='sgender' value='Female'>Female
+                </td>
+            </tr>
+
+            <tr>
+                <td><b><i>Date of Birth:</i></b></td>
+                <td><input type='date' id='sdob' name='sdob' ></td>
+            </tr>
+
+            <tr>
+                <td><b><i>Supplier Address:</i></b></td>
+                <td><textarea rows='3' cols='30' name='saddress'></textarea></td>
+            </tr>
+
+            <tr>
+                <td><b><i>State:</i></b></td>
+                <td><select id='sstate' name='sstate'>
+                <option>-State type-</option>   
+                </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <td><b><i>City:</i></b></td>
+                <td><select id='scity' name='scity'>
+                    <option>-City type-</option>   
+                    </select>
+                    </td>
+    
+            </tr>
+
+            <tr>
+                <td><b><i>Mobile no:</i></b></td>
+                <td><input type='text' name='smobile'></td>
+            </tr>
+
+            <tr>
+                <td><b><i>Picture:</i></b></td>
+                <td><input type='file' name='spicture'></td>
+            </tr>
+
+        </table>
+        <input type='submit'>
+        <input type='reset'><br><br>
+        <%=msg%>
+    </form>
+    </center>
+</html>
